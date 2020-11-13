@@ -4,7 +4,7 @@ from PIL import Image
 class Cars(models.Model):
     id=models.AutoField(primary_key=True)
     name=models.TextField(max_length=40,null=True)
-    year=models.DateField()
+    year=models.TextField(max_length=4,null=True)
     manufactuer=models.TextField(max_length=40,null=True)
     image=models.ImageField(default='default.jpg',upload_to='image', null=True, blank=True)
 

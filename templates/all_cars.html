@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Cars</title>
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+    {% include "nav_bar.html" %}
+    <div class="container">
+      <h2>All Cars</h2>
+      <div>
+          {% for i in data %}
+          <div id='div_image_{{ i.id }}'class="col-md-2" style="float:left">
+            <div class="thumbnail">
+                <div style="text-align:right;"><span id="del_{{ i.id }}">&#10060;</span></div>
+                <div class="caption" style="text-align:center;">
+                    <p>{{i.name}}</p>
+                </div>
+            <img src="{% static 'image/'%}{{i.image}}" alt="image" style="width:100%;height:120px;">
+            <div class="caption" style="text-align:center;">
+                {{i.manufactuer}} {{ " , " }} {{i.year}}
+            </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+</body>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("span").on("click", function(){
+                id=$(this).attr("id").split("_");
+                name=$("#name_"+id[1]).text();
+                if (id[0]=='del')
+                {//check comfimation for delete
+                    if(confirm("ARE YOU DELETE "+name+"?"))
+                    {
+                     // hide manufactuer div in this page
+                     $("#div_logo_"+id[1]).hide();
+
+                     //ajax request for delete data in database
+                     $.ajax({
+                            url: '/delete_manufactuer/',
+                            data: {
+                              'id': id[1]
+                            },
+                            dataType: 'json',
+                            success: function (data) {
+                              if (data.is_taken) {
+                                alert("A user with this username already exists.");
+                              }
+                            }
+                          });
+                    }
+
+                }
+            });
+        });
+    </script>
+</html>

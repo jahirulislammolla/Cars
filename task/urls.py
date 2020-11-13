@@ -15,14 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from cars.views import add_car,add_manufactuer,home,add_multi_cars
+import cars.views
+
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
-    path('',home,name='home'),
+    path('',cars.views.home,name='home'),
     path('admin/', admin.site.urls),
-    path('add_car/',add_car,name='add_car'),
-    path('add_manufactuer/',add_manufactuer,name='add_manufactuer'),
-    path('add_multi_cars/',add_multi_cars,name='add_multi_cars')
-    # path('/',)
+    path('add_car/',cars.views.add_car,name='add_car'),
+    path('add_manufactuer/',cars.views.add_manufactuer,name='add_manufactuer'),
+    path('add_multi_cars/',cars.views.add_multi_cars,name='add_multi_cars'),
+    path('all_cars/',cars.views.all_cars,name='all_cars'),
+    path('all_manufactuers/',cars.views.all_manufactuers,name='all_manufactuers'),
+    path('delete_manufactuer/',cars.views.delete_manufactuer,name='delete_manufactuer'),
 ]

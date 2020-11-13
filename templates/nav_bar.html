@@ -1,27 +1,32 @@
 {% block nav %}
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="{% url 'home' %}"></a>
+{% load static %}
+<nav class="navbar navbar-expand-md text-info bg-light sticky-top">
+	<div class="container-fluid" style="font-size:15px;">
+		<a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'image/car_logo.jpg' %}"></a>
 		<button class="navbar-toggler right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item ">
-					<a class="nav-link" href="{% url 'home' %}">HOME</a>
-				</li>
-
-				<li class="nav-item active">
-					<a class="nav-link" href="{% url 'add_car' %}">Add Car</a>
-				</li>
-
-                <li class="nav-item ">
-					<a class="nav-link" href="{% url 'add_multi_cars' %}">Add Multi Car</a>
-				</li>
-
 				<li class="nav-item">
-					<a class="nav-link " href="{% url 'add_manufactuer' %}">Add Manufactuer</a>
+					<a class="nav-link" href="{% url 'home' %}">Home</a>
+				</li>
+				<li class="dropdown nav-item">
+					<a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Cars</a>
+					<ul class="dropdown-menu">
+					  <li><a class="nav-link" href="{% url 'add_car' %}">Add Car</a></li>
+					  <li><a class="nav-link" href="{% url 'add_multi_cars' %}">Add Multi Cars</a></li>
+					  <li><a class="nav-link" href="{% url 'all_cars' %}">All Cars</a></li>
+					</ul>
+				</li>
+				<li class="dropdown nav-item">
+					<a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Manufactuers</a>
+					<ul class="dropdown-menu">
+					  <li><a class="nav-link" href="{% url 'add_manufactuer' %}">Add Manufactuer</a></li>
+					  <li><a class="nav-link" href="{% url 'all_manufactuers' %}">All Manufactuer</a></li>
+					  <li><a class="nav-link" href="{% url 'all_cars' %}">All Cars</a></li>
+					</ul>
 				</li>
 
 			</ul>
