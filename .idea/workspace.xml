@@ -2,8 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d1210c-50fc-4654-b1c7-acd106c598a4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/CJ-5_jeep.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/CJ6_jeep.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/Maserati_Bora_6086494575.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/Maserati_Bora_6086494575_S43dVtq.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/Suzuki_XL-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/Volvo_C30_volvo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/Volvo_XC90_volvo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/X1F48_BMW.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/X1F48_BMW_oeIioqe.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/X2_F39_BMW.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/X2_F39_BMW_l67wz6e.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/ford_aeromax_ford.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/ford_louisville_ford.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/honda_CR-V.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/honda_CR-V_O7keiX6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/honda_civic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/honda_civic_IyzfpGj.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/lexus_gs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/lexus_ls.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/model_s_tesla.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/model_s_tesla_NhtFMQS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/model_x__tesla.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/model_x__tesla_quDVgcU.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/nissan-petrol.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/nissan-teana.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/nissan-xtrail.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/toyota_innova.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/toyota_innova_fbQs7qd.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/vento-exterior-right-front-three-quarter-169148.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/image/volkswagen-t-roc-right-front-three-quarter2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/logo/nissan-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/image/logo/volvo-logo_KVTemom.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/country_wise_manufactuer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cars/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cars/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/image/image/66034.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/image/image/66034_AcY4OCY.jpg" beforeDir="false" />
