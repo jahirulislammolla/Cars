@@ -26,25 +26,26 @@
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="name_1">Name:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name_1" placeholder="Enter name" name="name_1">
+                    <input type="text" class="form-control" id="name_1" placeholder="Enter name" name="name_1" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="year_1">Year:</label>
                   <div class="col-sm-10">
-                    <input type="number" class="form-control" id="year_1" placeholder="Enter year" name="year_1">
+                    <input type="number" class="form-control" id="year_1" placeholder="Enter year" name="year_1" min="1800" max="2050" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="manufactuer_1">Manufactuer:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="manufactuer_1" placeholder="Enter manufactuer" name="manufactuer_1">
+                    <input type="text" class="form-control" id="manufactuer_1" placeholder="Enter manufactuer" name="manufactuer_1" required>
+                    <div style="color:red;" id="alert_1"></div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="image_1">Image:</label>
                   <div class="col-sm-10">
-                    <input type="file" class="form-control" id="image_1" placeholder="Enter image" name="image_1">
+                    <input type="file" class="form-control" id="image_1" placeholder="Enter image" name="image_1" required>
                   </div>
                 </div>
             </div>
@@ -67,10 +68,33 @@
         </div>
       </form>
     </div>
+    {% csrf_token %}
     <script type="text/javascript">
         $(document).ready(function(){
-        $("#add_multi").on("click",function(){
-           //
+
+        //Manufactuer validation................
+        $("input").on("change",function(){
+         var id=$(this).attr('id');
+         var id_split=id.split("_");
+         var input_value=$("#"+id).val();
+        $("#alert_"+id_split[1]).text("");
+          if(id_split[0]=='manufactuer' && input_value != "")
+          {
+            $.ajax({
+                 url: '/check_manufactuer/',
+                  data: {
+                          'name': input_value,
+                         },
+                            dataType: 'json',
+                            success: function (data) {
+
+                              if (data['count']!=1) {
+                               $("#alert_"+id_split[1]).text("Manufactuer company "+input_value+" can't fouund");
+                               $("#"+id).val("");
+                             }
+                            }
+                          });
+          }
         });
         });
     </script>

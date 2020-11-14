@@ -16,26 +16,30 @@
 </head>
 <body>
     {% include "nav_bar.html" %}
-    <div class="container">
+    <form class="container">
       <h2>All Cars</h2>
       <div>
-          {% for i in data %}
-          <div id='div_image_{{ i.id }}'class="col-md-2" style="float:left">
-            <div class="thumbnail">
-                <div style="text-align:right;"><span id="del_{{ i.id }}">&#10060;</span></div>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+              {% for i in data %}
+              <div id='div_image_{{ i.id }}'class="col-md-4" style="float:left">
+                <div class="thumbnail">
+                    <div style="text-align:right;"><span id="del_{{ i.id }}">&#10060;</span></div>
+                    <div class="caption" style="text-align:center;">
+                        <b id="name_{{i.id}}">{{i.name}}</b>
+                    </div>
+                <img src="{% static 'image/'%}{{i.image}}" alt="image" style="width:100%;height:200px;">
                 <div class="caption" style="text-align:center;">
-                    <p>{{i.name}}</p>
+                   <b> {{i.manufactuer}} {{ " , " }} {{i.year}} </b>
                 </div>
-            <img src="{% static 'image/'%}{{i.image}}" alt="image" style="width:100%;height:120px;">
-            <div class="caption" style="text-align:center;">
-                {{i.manufactuer}} {{ " , " }} {{i.year}}
-            </div>
-            </div>
-          </div>
-          {% endfor %}
-      </div>
+                </div>
+              </div>
+            {% endfor %}
+          </form>
     </div>
 </body>
+    {% csrf_token %}
     <script type="text/javascript">
         $(document).ready(function(){
             $("span").on("click", function(){
@@ -43,22 +47,21 @@
                 name=$("#name_"+id[1]).text();
                 if (id[0]=='del')
                 {//check comfimation for delete
-                    if(confirm("ARE YOU DELETE "+name+"?"))
+                    if(confirm("ARE YOU DELETE "+name+" ?"))
                     {
                      // hide manufactuer div in this page
-                     $("#div_logo_"+id[1]).hide();
-
+                     $("#div_image_"+id[1]).hide();
+                     //console.log(id[1])
                      //ajax request for delete data in database
                      $.ajax({
-                            url: '/delete_manufactuer/',
+                            url: '/delete_car/',
                             data: {
                               'id': id[1]
                             },
                             dataType: 'json',
                             success: function (data) {
-                              if (data.is_taken) {
-                                alert("A user with this username already exists.");
-                              }
+                               console.log(data);
+
                             }
                           });
                     }

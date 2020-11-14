@@ -30,33 +30,35 @@
     <div class="container">
         {% if cars %}
       <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-
-          <div id="add_new_div">
+            {{ form.as_p }}
+          <div>
+              <!--car mean serial number -->
               {% for car in cars %}
               <h3 style="text-align:center">Car : {{car}} </h3>
-              <div sytle="padding-top:10px;border:2px solid blue;" id="car_div_{{car}}">
+              <div sytle="padding-top:10px;border:2px solid blue;" id="div_{{car}}">
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="name_{{car}}">Name:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name_{{car}}" placeholder="Enter name" name="name_{{car}}">
+                    <input type="text" class="form-control" id="name_{{car}}" placeholder="Enter name" name="name_{{car}}" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="year_{{car}}">Year:</label>
                   <div class="col-sm-10">
-                    <input type="number" class="form-control" id="year_{{car}}" placeholder="Enter year" name="year_{{car}}">
+                    <input type="number" class="form-control" id="year_{{car}}" placeholder="Enter year" name="year_{{car}}" min="1800" max="2050" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="manufactuer_{{car}}">Manufactuer:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="manufactuer_{{car}}" placeholder="Enter manufactuer" name="manufactuer_{{car}}">
+                    <input type="text" class="form-control" id="manufactuer_{{car}}" placeholder="Enter manufactuer" name="manufactuer_{{car}}" required>
+                    <div style="color:red;" id="alert_{{car}}"></div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="image_{{car}}">Image:</label>
                   <div class="col-sm-10">
-                    <input type="file" class="form-control" id="image_{{car}}" placeholder="Enter image" name="image_{{car}}">
+                    <input type="file" class="form-control" id="image_{{car}}" placeholder="Enter image" name="image_{{car}}" required>
                   </div>
                 </div>
             </div>
@@ -80,10 +82,33 @@
       </form>
         {%endif%}
     </div>
+    {% csrf_token %}
     <script type="text/javascript">
         $(document).ready(function(){
-        $("#add_multi").on("click",function(){
-           //
+
+        //Manufactuer validation................
+        $("input").on("change",function(){
+         var id=$(this).attr('id');
+         var id_split=id.split("_");
+         var input_value=$("#"+id).val();
+        $("#alert_"+id_split[1]).text("");
+          if(id_split[0]=='manufactuer' && input_value != "")
+          {
+            $.ajax({
+                 url: '/check_manufactuer/',
+                  data: {
+                          'name': input_value,
+                         },
+                            dataType: 'json',
+                            success: function (data) {
+
+                              if (data['count']!=1) {
+                               $("#alert_"+id_split[1]).text("Manufactuer company "+input_value+" can't fouund");
+                               $("#"+id).val("");
+                             }
+                            }
+                          });
+          }
         });
         });
     </script>

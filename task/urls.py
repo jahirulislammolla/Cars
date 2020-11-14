@@ -28,4 +28,7 @@ urlpatterns = [
     path('all_cars/',cars.views.all_cars,name='all_cars'),
     path('all_manufactuers/',cars.views.all_manufactuers,name='all_manufactuers'),
     path('delete_manufactuer/',cars.views.delete_manufactuer,name='delete_manufactuer'),
+    path('delete_car/',cars.views.delete_car,name='delete_car'),
+    path('check_manufactuer/',cars.views.check_manufactuer,name='check_manufactuer'),
+    path('country_wise_manufactuer/',cars.views.country_wise_manufactuer,name='country_wise_manufactuer'),
 ]

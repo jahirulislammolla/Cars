@@ -26,15 +26,15 @@
             {% csrf_token %}
             {{ form.as_p }}
           {% for i in data %}
-          <div id='div_logo_{{ i.id }}'class="col-md-2" style="float:left">
+          <div id='div_logo_{{ i.id }}'class="col-md-3" style="float:left">
             <div class="thumbnail">
                 <div style="text-align:right;"><span id="del_{{ i.id }}">&#10060;</span></div>
                 <div class="caption" style="text-align:center;">
-                    <p id="name_{{i.id}}">{{i.name}}</p>
+                    <b id="name_{{i.id}}" >{{i.name}}</b>
                 </div>
             <img src="{% static 'image/'%}{{i.logo}}" alt="Nature" style="width:100%;height:120px;">
             <div class="caption" style="text-align:center;">
-                <a href="">{{i.country}}</a>
+                <b>{{i.country}}</b>
             </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
                 name=$("#name_"+id[1]).text();
                 if (id[0]=='del')
                 {//check comfimation for delete
-                    if(confirm("ARE YOU DELETE "+name+"?"))
+                    if(confirm("ARE YOU DELETE "+name+" ?"))
                     {
                      // hide manufactuer div in this page
                      $("#div_logo_"+id[1]).hide();
@@ -58,14 +58,14 @@
                      //ajax request for delete data in database
                      $.ajax({
                             url: '/delete_manufactuer/',
+
                             data: {
                               'id': id[1]
                             },
                             dataType: 'json',
                             success: function (data) {
-                              if (data.is_taken) {
-                                alert("A user with this username already exists.");
-                              }
+                                console.log(data);
+
                             }
                           });
                     }
