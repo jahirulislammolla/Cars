@@ -1,1 +1,1 @@
-# Cars_django_project [https://www.djangoproject.com/]
+# Cars [Django] (https://www.djangoproject.com/) task
