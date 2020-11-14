@@ -1,1 +1,2 @@
-# Cars [Django] (https://www.djangoproject.com/) task
+# [Django] (https://www.djangoproject.com/)
+# Cars Management task
