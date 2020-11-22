@@ -96,7 +96,8 @@ def country_wise_manufactuer(request):
         data_manufactuer[i.country]+=[i.name]
         data_car[i.name] = []
     for i in cars:
-        data_car[i.manufactuer]+=[i]
+        if i.manufactuer in data_car:
+            data_car[i.manufactuer]+=[i]
     return render(request,'country_wise_manufactuer.html',{ "data_car":data_car, "data_manufactuer":data_manufactuer})
 from django.template.defaulttags import register
 
